@@ -44,10 +44,11 @@ const App = () => {
       {cat.length > 0 && cat.map((item, index) => {
         return (
           <div>
-            <button onClickCapture={addBasket}>ADD</button>
-            <button onClick={removeBasket}>REMOVE</button>
             <p>{item.text}</p>
             <img src={item.url} alt="cat" />
+            <br />
+            <button onClickCapture={addBasket}>ADD</button>
+            <button onClick={removeBasket}>REMOVE</button>
           </div>
         )
       })}
