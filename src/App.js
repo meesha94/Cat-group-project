@@ -10,6 +10,9 @@ const App = () => {
   // ADD to the Basket
   const addBasket = () => {
     setBasket(basket + 1)
+    if (basket == 5 ) {
+      setBasket(5)
+    }
   };
 
   // REMOVE from the Basket
