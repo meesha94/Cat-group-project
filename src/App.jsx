@@ -5,12 +5,12 @@ const App = () => {
   const [cat, setCat] = useState({})
   // For the Basket
   const [basket, setBasket] = useState(0);
- 
+
 
   // ADD to the Basket
   const addBasket = () => {
     setBasket(basket + 1)
-    if (basket == 5 ) {
+    if (basket == 5) {
       setBasket(5)
     }
   };
@@ -18,8 +18,8 @@ const App = () => {
   // REMOVE from the Basket
   const removeBasket = () => {
     setBasket(basket - 1)
-    if (basket == 0 ) {
-        setBasket(0)
+    if (basket == 0) {
+      setBasket(0)
     }
   };
 
@@ -56,7 +56,6 @@ const App = () => {
 
         })}
       </div>
-
 
     </div>
   )
