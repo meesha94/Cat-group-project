@@ -1,16 +1,17 @@
 import './index.css';
 import { useState, useEffect } from "react";
+import { name } from "faker";
+
 
 const App = () => {
   const [cat, setCat] = useState({})
   // For the Basket
   const [basket, setBasket] = useState(0);
- 
 
   // ADD to the Basket
   const addBasket = () => {
     setBasket(basket + 1)
-    if (basket == 5 ) {
+    if (basket == 5) {
       setBasket(5)
     }
   };
@@ -18,12 +19,13 @@ const App = () => {
   // REMOVE from the Basket
   const removeBasket = () => {
     setBasket(basket - 1)
-    if (basket == 0 ) {
-        setBasket(0)
+    if (basket == 0) {
+      setBasket(0)
     }
   };
-
-
+  
+  let firstName = name.firstName();
+  
   useEffect(() => {
     handleFetch()
   }, [])
@@ -34,8 +36,10 @@ const App = () => {
     console.log(data)
 
     setCat(data)
-  };
 
+  };
+  
+  
   return (
     <div>
       <h1>The Cat Shop </h1>
@@ -47,6 +51,7 @@ const App = () => {
             <div className="item">
               <p >{item.text}</p>
               <img src={item.url} alt="cat" />
+              <p>{name.firstName()}</p>
               <br />
               <button onClickCapture={addBasket}>ADD</button>
               <button onClick={removeBasket}>REMOVE</button>
@@ -56,7 +61,6 @@ const App = () => {
 
         })}
       </div>
-
 
     </div>
   )
