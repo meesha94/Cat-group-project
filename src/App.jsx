@@ -47,10 +47,8 @@ const App = () => {
     <div>
       <BasketPanel />
       <h1>The Cat Shop </h1>
-      <h4>In the Basket: {basket}</h4>
       <div className="grid">
         {cat.length > 0 && cat.map((item, index) => {
-
           return (
             <div className="item">
               <p >{item.text}</p>

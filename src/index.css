@@ -1,5 +1,4 @@
 body {
-  margin: 2%;
   background-color: beige;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
@@ -30,6 +29,7 @@ img {
   max-height: 50%;
   padding-bottom: 2%;
 }
+
 button {
   background-color: #f4b9b2;
   border: 2px solid #de6b48;
@@ -43,6 +43,7 @@ button {
   margin: 4px 6px;
   border-radius: 60px;
 }
+
 h1 {
   text-align: center;
   color: #de6b48;

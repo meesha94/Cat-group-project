@@ -166,7 +166,7 @@ export default BasketPanel;
 
 const Container = styled.div`
  position: fixed;
- right: 28px;
+ right: 15px;
  top: 53px;
   box-sizing: content-box;
   background: #E8E7E7;
@@ -191,9 +191,10 @@ const Panel = styled.div`
   position: fixed;
   font-size: 1.2em;
   right: 0px;
+  top: 0px;
   color: white;
   font-weight: 600;
-  width: 275px;
+  width: 285px;
   text-align: center;
   cursor: pointer;
   padding: 0.8rem 0rem;
