@@ -123,9 +123,6 @@ const Basket = (props) => {
             handleRemove={props.handleRemove}
           />
         ))}
-        <Center>
-          Total £<span>{props.total[0]}</span>
-        </Center>
       </Inner>
     </Container>
   );
