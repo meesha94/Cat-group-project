@@ -1,4 +1,6 @@
+import './App.css';
 import './index.css';
+import BasketPanel from './Components/basket';
 import { useState, useEffect } from "react";
 import { faker } from '@faker-js/faker';
 
@@ -43,6 +45,7 @@ const App = () => {
 
   return (
     <div>
+      <BasketPanel />
       <h1>The Cat Shop </h1>
       <h4>In the Basket: {basket}</h4>
       <div className="grid">
@@ -67,7 +70,6 @@ const App = () => {
             </div>
 
           )
-
         })}
       </div>
 

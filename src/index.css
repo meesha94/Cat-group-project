@@ -1,31 +1,28 @@
 body {
   margin: 2%;
   background-color: beige;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
 .grid {
   display: grid;
-	grid-template-columns: repeat(2, auto);
-	grid-template-rows: repeat(auto, auto);
-	margin: 5%;
-
+  grid-template-columns: repeat(2, auto);
+  grid-template-rows: repeat(auto, auto);
+  margin: 5%;
 }
 
-.item { 
+.item {
   display: flex;
   flex-direction: column;
-  
- 
 }
 
 img {
@@ -34,25 +31,24 @@ img {
   padding-bottom: 2%;
 }
 button {
-  background-color:#F4B9B2 ;
-    border: 2px solid #DE6B48; width: 200px;
-    color: #DE6B48;
-    padding: 15px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 14px;
-    margin: 4px 6px;
-    border-radius: 60px;
+  background-color: #f4b9b2;
+  border: 2px solid #de6b48;
+  width: 200px;
+  color: #de6b48;
+  padding: 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 4px 6px;
+  border-radius: 60px;
 }
 h1 {
   text-align: center;
-  color: #DE6B48;
+  color: #de6b48;
 }
 
 h4 {
   text-align: right;
-  color: #DE6B48;
-  
+  color: #de6b48;
 }
-
