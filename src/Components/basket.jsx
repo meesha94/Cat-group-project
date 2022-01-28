@@ -174,7 +174,7 @@ const Container = styled.div`
   max-width: 250px;
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
+  border: 1px solid #3B3A3A;
   max-height: 100vh;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
@@ -198,14 +198,14 @@ const Panel = styled.div`
   cursor: pointer;
   padding: 0.8rem 0rem;
   box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
-  border: 1px solid black;
+  border: 1px solid #3B3A3A;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
 `;
 
 const CatImage = styled.img`
   width: 180px;
-  border: 1px solid black;
+  border: 1px solid #3B3A3A;
   border-radius: 10px;
   pointer: cursor;
 `;
@@ -214,7 +214,7 @@ const Spacer = styled.div`
   width: 100%;
   text-align: center;
   padding: 0.25rem 2rem 0.3rem 0;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #3B3A3A;
 `;
 
 const Center = styled.div`
