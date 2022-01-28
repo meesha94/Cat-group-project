@@ -9,7 +9,8 @@ const App = () => {
   const [basket, setBasket] = useState(0);
 
   // ADD to the Basket
-  const addBasket = () => {
+  const addBasket = (e) => {
+    e.preventDefault();
     setBasket(basket + 1)
     if (basket === 10) {
       setBasket(10)
@@ -17,7 +18,8 @@ const App = () => {
   };
 
   // REMOVE from the Basket
-  const removeBasket = () => {
+  const removeBasket = (e) => {
+    e.preventDefault();
     setBasket(basket - 1)
     if (basket === 0) {
       setBasket(0)
