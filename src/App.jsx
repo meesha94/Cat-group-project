@@ -23,8 +23,8 @@ const App = () => {
       setBasket(0)
     }
   };
-  
-  
+
+
   useEffect(() => {
     handleFetch()
   }, [])
@@ -37,8 +37,8 @@ const App = () => {
     setCat(data)
 
   };
-  
-  
+
+
   return (
     <div>
       <h1>The Cat Shop </h1>
@@ -51,9 +51,14 @@ const App = () => {
               <p >{item.text}</p>
               <img src={item.url} alt="cat" />
               <p>{faker.name.findName()}</p>
-              <p>£ {faker.datatype.number({min: 300,
-    max: 700})}</p>
-              <p>Please contact {faker.name.firstName()} by phone on {faker.phone.phoneNumber()} or by email {faker.internet.email()} for more information. </p>
+              <p>£ {faker.datatype.number({
+                min: 300,
+                max: 700
+              })}</p>
+              <div className ="info">
+              <p>Please contact {faker.name.firstName()} by phone on {faker.phone.phoneNumber()} </p>
+              <p>or by email at {faker.internet.email()} for more information. </p>
+              </div>
               <br />
               <button onClickCapture={addBasket}>ADD</button>
               <button onClick={removeBasket}>REMOVE</button>
