@@ -1,59 +1,17 @@
 import React, { useState, useEffect } from "react";
 import styled, { css } from "styled-components";
 
-const BasketPanel = () => {
+
+const BasketPanel = (props) => {
   const [open, setOpen] = useState(false);
-  const [basketList, setBasketList] = useState([
-    {
-      id: 4,
-      quantity: 1,
-      price: 1.99,
-      title: "A fury picture",
-      image: "https://i.ebayimg.com/images/g/KIYAAOSwVblcbUkB/s-l300.jpg",
-    },
-    {
-      id: 7,
-      quantity: 3,
-      price: 2.99,
-      title: "A fury",
-      image: "https://i.ebayimg.com/images/g/KIYAAOSwVblcbUkB/s-l300.jpg",
-    },
-    {
-      id: 12,
-      quantity: 2,
-      price: 2.99,
-      title: "furr",
-      image: "https://i.ebayimg.com/images/g/KIYAAOSwVblcbUkB/s-l300.jpg",
-    },
-    {
-      id: 9,
-      quantity: 2,
-      price: 4.99,
-      title: "Cat thingy",
-      image: "https://m.media-amazon.com/images/I/71kNvlpS9GL._AC_SY355_.jpg",
-    },
-    {
-      id: 7,
-      quantity: 3,
-      price: 2.99,
-      title: "A fury",
-      image: "https://i.ebayimg.com/images/g/KIYAAOSwVblcbUkB/s-l300.jpg",
-    },
-    {
-      id: 12,
-      quantity: 2,
-      price: 2.99,
-      title: "furr",
-      image: "https://i.ebayimg.com/images/g/KIYAAOSwVblcbUkB/s-l300.jpg",
-    },
-    {
-      id: 9,
-      quantity: 2,
-      price: 4.99,
-      title: "Cat thingy",
-      image: "https://m.media-amazon.com/images/I/71kNvlpS9GL._AC_SY355_.jpg",
-    },
-  ]);
+  const [basketList, setBasketList] = useState([...props.list])
+
+  let tempArr = []
+  props.list.forEach(e=> {
+    tempArr.push(e)
+
+  })
+  
 
   useEffect(() => {
     updateTotal();
@@ -115,7 +73,7 @@ const Basket = (props) => {
           <BasketItem
             key={props.list.indexOf(item)}
             id={props.list.indexOf(item)}
-            img={item.image}
+            img={item.url}
             quantity={item.quantity}
             price={item.price}
             title={item.title}
