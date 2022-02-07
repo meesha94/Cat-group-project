@@ -1,106 +1,22 @@
 import React, { useState, useEffect } from "react";
 import styled, { css } from "styled-components";
+// import { motion } from "framer-motion";
 
-const BasketPanel = () => {
+const BasketPanel = (props) => {
   const [open, setOpen] = useState(false);
-  const [basketList, setBasketList] = useState([
-    {
-      id: 4,
-      quantity: 1,
-      price: 1.99,
-      title: "A fury picture",
-      image: "https://i.ebayimg.com/images/g/KIYAAOSwVblcbUkB/s-l300.jpg",
-    },
-    {
-      id: 7,
-      quantity: 3,
-      price: 2.99,
-      title: "A fury",
-      image: "https://i.ebayimg.com/images/g/KIYAAOSwVblcbUkB/s-l300.jpg",
-    },
-    {
-      id: 12,
-      quantity: 2,
-      price: 2.99,
-      title: "furr",
-      image: "https://i.ebayimg.com/images/g/KIYAAOSwVblcbUkB/s-l300.jpg",
-    },
-    {
-      id: 9,
-      quantity: 2,
-      price: 4.99,
-      title: "Cat thingy",
-      image: "https://m.media-amazon.com/images/I/71kNvlpS9GL._AC_SY355_.jpg",
-    },
-    {
-      id: 7,
-      quantity: 3,
-      price: 2.99,
-      title: "A fury",
-      image: "https://i.ebayimg.com/images/g/KIYAAOSwVblcbUkB/s-l300.jpg",
-    },
-    {
-      id: 12,
-      quantity: 2,
-      price: 2.99,
-      title: "furr",
-      image: "https://i.ebayimg.com/images/g/KIYAAOSwVblcbUkB/s-l300.jpg",
-    },
-    {
-      id: 9,
-      quantity: 2,
-      price: 4.99,
-      title: "Cat thingy",
-      image: "https://m.media-amazon.com/images/I/71kNvlpS9GL._AC_SY355_.jpg",
-    },
-  ]);
-
-  useEffect(() => {
-    updateTotal();
-  }, [, basketList]);
-  const [total, setTotal] = useState([0, 0]);
-
-  const handleRemove = (item) => {
-    console.log("r" + item);
-    let temp_array = [...basketList];
-    temp_array.splice(item, 1);
-    setBasketList(temp_array);
-  };
-
-  const updateQuantity = (item, num) => {
-    console.log(item);
-    let temp_array = [...basketList];
-    num === "+"
-      ? (temp_array[item].quantity += 1)
-      : num === "-"
-      ? (temp_array[item].quantity -= 1)
-      : (temp_array[item].quantity = num);
-    setBasketList(temp_array);
-    console.log(temp_array);
-  };
-
-  const updateTotal = () => {
-    let currentTotal = 0;
-    let currentQuantity = 0;
-    basketList.forEach((e) => {
-      currentTotal = currentTotal + e.price * e.quantity;
-      currentQuantity = currentQuantity + e.quantity;
-    });
-    setTotal([currentTotal.toFixed(2), currentQuantity]);
-  };
 
   return (
     <Color>
       <Panel onClick={() => setOpen(!open)}>
-        Basket -<span> £{total[0]} </span>
-        <Num>{total[1]}</Num>
+        Basket -<span> £{props.total[0]} </span>
+        <Num>{props.total[1]}</Num>
       </Panel>
       {open && (
         <Basket
-          list={basketList}
-          updateQuantity={updateQuantity}
-          handleRemove={handleRemove}
-          total={total}
+          list={props.list}
+          updateQuantity={props.add}
+          handleRemove={props.remove}
+          total={props.total}
         />
       )}
     </Color>
@@ -109,22 +25,22 @@ const BasketPanel = () => {
 
 const Basket = (props) => {
   return (
-    <Container className="container">
-      <Inner className="inner">
-        {props.list.map((item) => (
-          <BasketItem
-            key={props.list.indexOf(item)}
-            id={props.list.indexOf(item)}
-            img={item.image}
-            quantity={item.quantity}
-            price={item.price}
-            title={item.title}
-            updateQuantity={props.updateQuantity}
-            handleRemove={props.handleRemove}
-          />
-        ))}
-      </Inner>
-    </Container>
+      <Container className="container">
+        <Inner className="inner">
+          {props.list.map((item) => (
+            <BasketItem
+              key={props.list.indexOf(item)}
+              id={props.list.indexOf(item)}
+              img={item.url}
+              quantity={item.quantity}
+              price={item.price}
+              title={item.title}
+              updateQuantity={props.updateQuantity}
+              handleRemove={props.handleRemove}
+            />
+          ))}
+        </Inner>
+      </Container>
   );
 };
 
@@ -165,21 +81,22 @@ const BasketItem = (props) => {
 export default BasketPanel;
 
 const Container = styled.div`
- position: fixed;
- right: 28px;
- top: 53px;
+  position: fixed;
+  right: 32px;
+  top: 53px;
   box-sizing: content-box;
-  background: #E8E7E7;
+  background: rgba(222, 222, 222, 0.7);
   overflow: hidden;
   max-width: 250px;
   display: flex;
   flex-direction: column;
-  border: 1px solid #3B3A3A;
+  border: 1px solid #3b3a3a;
   max-height: 100vh;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
   margin: 0 0 2rem 1.5rem;
   box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+  transition: 3s ease;
 `;
 
 const Quantity = styled.input`
@@ -191,21 +108,27 @@ const Panel = styled.div`
   position: fixed;
   font-size: 1.2em;
   right: 0px;
+  top: 0px;
   color: white;
   font-weight: 600;
-  width: 275px;
+  width: 285px;
   text-align: center;
   cursor: pointer;
   padding: 0.8rem 0rem;
-  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
-  border: 1px solid #3B3A3A;
+  background-color: rgba(253, 203, 195, 0.87);
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
+    rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
+    rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px,
+    rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px,
+    rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  border: 1px solid #3b3a3a;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
 `;
 
 const CatImage = styled.img`
   width: 180px;
-  border: 1px solid #3B3A3A;
+  border: 1px solid #3b3a3a;
   border-radius: 10px;
   pointer: cursor;
 `;
@@ -214,7 +137,7 @@ const Spacer = styled.div`
   width: 100%;
   text-align: center;
   padding: 0.25rem 2rem 0.3rem 0;
-  border-bottom: 1px solid #3B3A3A;
+  border-bottom: 1px solid #3b3a3a;
 `;
 
 const Center = styled.div`
@@ -222,7 +145,11 @@ const Center = styled.div`
   text-align: center;
   font-weight: 600;
   button {
+    padding: 0.5rem 1.5rem;
+    margin: 0.25rem;
+    background: rgba(253, 203, 195, 0.37);
     cursor: pointer;
+    border-radius: 20px;
   }
 `;
 
@@ -231,12 +158,12 @@ const Color = styled.div`
 `;
 
 const Num = styled.span`
-  background-color:white;
-  color: #3B3A3A;
+  background-color: white;
+  color: #3b3a3a;
   border-radius: 50px;
   padding: 0 0.4rem;
   margin-left: 0.5rem;
-  border: 1px solid #3B3A3A;
+  border: 1px solid #3b3a3a;
   font-size: 0.8em;
   font-weight: 600;
 `;
