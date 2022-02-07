@@ -5,48 +5,12 @@ import styled, { css } from "styled-components";
 
 const BasketPanel = (props) => {
   const [open, setOpen] = useState(false);
-  const [basketList, setBasketList] = useState([...props.list])
 
   let tempArr = []
   props.list.forEach(e=> {
     tempArr.push(e)
 
   })
-  
-
-  useEffect(() => {
-    updateTotal();
-  }, [, basketList]);
-  const [total, setTotal] = useState([0, 0]);
-
-  const handleRemove = (item) => {
-    console.log("r" + item);
-    let temp_array = [...basketList];
-    temp_array.splice(item, 1);
-    setBasketList(temp_array);
-  };
-
-  const updateQuantity = (item, num) => {
-    console.log(item);
-    let temp_array = [...basketList];
-    num === "+"
-      ? (temp_array[item].quantity += 1)
-      : num === "-"
-      ? (temp_array[item].quantity -= 1)
-      : (temp_array[item].quantity = num);
-    setBasketList(temp_array);
-    console.log(temp_array);
-  };
-
-  const updateTotal = () => {
-    let currentTotal = 0;
-    let currentQuantity = 0;
-    basketList.forEach((e) => {
-      currentTotal = currentTotal + e.price * e.quantity;
-      currentQuantity = currentQuantity + e.quantity;
-    });
-    setTotal([currentTotal.toFixed(2), currentQuantity]);
-  };
 
   return (
     <Color>
