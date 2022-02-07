@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { faker } from '@faker-js/faker';
 import BasketPanel from "./basket";
+import styled from "styled-components";
 
 const Layout = () => {
     const [cat, setCat] = useState([])
@@ -110,7 +111,7 @@ const Layout = () => {
                             </div>
                             
                             <br />
-                            <button className="button" onClick={() => onAdd(item)}>Add</button>
+                            <button className="button" onClick={() => onAdd(item)}>Add to Basket</button>
                             <br/>
                             
 
@@ -124,10 +125,19 @@ const Layout = () => {
                     )
                 })}
             </div>
+            <footer>
+              <Footer>
 
+              </Footer>
+            </footer>
         </div>
     )
 };
 
 
 export default Layout;
+
+const Footer = styled.div`
+  height: 400px;
+  background-color: #3E3B3B;
+`
